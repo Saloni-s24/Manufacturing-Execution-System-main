@@ -1,142 +1,137 @@
-// src/modules/workcenter/data/workcenterData.js
 
 export const workCenters = [
   {
-    id: "CNC-01",
-    description: "CNC Machining 1",
-    category: "Machine",
-    capacity: 8,
-    utilization: 72,
-    currentOrder: "PO-100423",
-    operator: "Rajesh S.",
-    status: "Running",
+    plant: "1000",
+    workCenter: "LINE-02",
+    shiftName: "Morning Shift",
+    shiftDate: "5/21/2026",
+    shiftStart: "06:00",
+    shiftEnd: "14:00",
+    breakDuration: 30,
+    netAvailableTime: 450,
+    capacityCategory: "001",
+    shiftModelId: "SM-A1",
   },
 
   {
-    id: "CNC-02",
-    description: "CNC Machining 2",
-    category: "Machine",
-    capacity: 8,
-    utilization: 0,
-    currentOrder: null,
-    operator: null,
-    status: "Down",
+    plant: "1000",
+    workCenter: "CNC-05",
+    shiftName: "Morning Shift",
+    shiftDate: "5/21/2026",
+    shiftStart: "06:00",
+    shiftEnd: "14:00",
+    breakDuration: 30,
+    netAvailableTime: 450,
+    capacityCategory: "001",
+    shiftModelId: "SM-A1",
   },
 
   {
-    id: "CNC-03",
-    description: "CNC Machining 3",
-    category: "Machine",
-    capacity: 8,
-    utilization: 48,
-    currentOrder: "PO-100431",
-    operator: "Amit K.",
-    status: "Running (Late)",
-  },
-
-  {
-    id: "CNC-04",
-    description: "CNC Machining 4",
-    category: "Machine",
-    capacity: 8,
-    utilization: 95,
-    currentOrder: "PO-100444",
-    operator: "Sonal P.",
-    status: "Running",
-  },
-
-  {
-    id: "WELD-01",
-    description: "Welding Station 1",
-    category: "Labour",
-    capacity: 8,
-    utilization: 60,
-    currentOrder: "PO-100450",
-    operator: "Dev R.",
-    status: "Running",
-  },
-
-  {
-    id: "WELD-02",
-    description: "Welding Station 2",
-    category: "Labour",
-    capacity: 8,
-    utilization: 0,
-    currentOrder: null,
-    operator: null,
-    status: "Idle",
+    plant: "1000",
+    workCenter: "WELD-02",
+    shiftName: "Morning Shift",
+    shiftDate: "5/21/2026",
+    shiftStart: "06:00",
+    shiftEnd: "14:00",
+    breakDuration: 30,
+    netAvailableTime: 450,
+    capacityCategory: "001",
+    shiftModelId: "SM-A1",
   },
 ];
 
+
 export const ganttData = [
   {
-    wc: "CNC-01",
+    wc: "LINE-02",
+    plant: "1000",
+    shiftName: "Morning Shift",
+
     orders: [
       {
-        id: "PO-100423 - Gear Assy X7",
-        start: 8,
+        id: "PO-20481",
+        operation: "0010",
+        start: 6,
+        end: 9,
+        plannedStart: "5/21/2026",
+        plannedFinish: "5/26/2026",
+        reqCapacity: 32,
+        confirmedCap: 28,
+        targetUnits: 500,
+        actualUnits: 420,
+        status: "Running",
+      },
+
+      {
+        id: "PO-20475",
+        operation: "0010",
+        start: 10,
         end: 13,
-        status: "Running",
-      },
-    ],
-  },
-
-  {
-    wc: "CNC-02",
-    orders: [
-      {
-        id: "Maintenance",
-        start: 8,
-        end: 10,
-        status: "Maintenance",
-      },
-      {
-        id: "PO-100460 - Valve Body",
-        start: 10.5,
-        end: 14.8,
-        status: "Running",
-      },
-    ],
-  },
-
-  {
-    wc: "CNC-03",
-    orders: [
-      {
-        id: "PO-100431 - Motor Housing",
-        start: 8,
-        end: 12,
-        status: "Delayed",
-      },
-    ],
-  },
-
-  {
-    wc: "CNC-04",
-    orders: [
-      {
-        id: "PO-100444 - Control Panel CP5",
-        start: 8,
-        end: 15.8,
+        plannedStart: "5/21/2026",
+        plannedFinish: "5/26/2026",
+        reqCapacity: 18,
+        confirmedCap: 15,
+        targetUnits: 320,
+        actualUnits: 250,
         status: "Near Done",
       },
     ],
   },
 
   {
-    wc: "WELD-01",
+    wc: "CNC-05",
+    plant: "1000",
+    shiftName: "Morning Shift",
+
     orders: [
       {
-        id: "Setup",
-        start: 8,
-        end: 8.8,
-        status: "Setup",
+        id: "PO-20479",
+        operation: "0010",
+        start: 7,
+        end: 11,
+        plannedStart: "5/21/2026",
+        plannedFinish: "5/26/2026",
+        reqCapacity: 24,
+        confirmedCap: 20,
+        targetUnits: 300,
+        actualUnits: 240,
+        status: "Delayed",
       },
+
       {
-        id: "PO-100450 - Bracket Assy",
-        start: 9.2,
-        end: 15.5,
+        id: "PO-20472",
+        operation: "0010",
+        start: 11,
+        end: 14,
+        plannedStart: "5/21/2026",
+        plannedFinish: "5/26/2026",
+        reqCapacity: 20,
+        confirmedCap: 17,
+        targetUnits: 260,
+        actualUnits: 210,
         status: "Running",
+      },
+    ],
+  },
+
+  {
+    wc: "WELD-02",
+    plant: "1000",
+    shiftName: "Morning Shift",
+
+    orders: [
+      {
+        id: "PO-20477",
+        operation: "0010",
+        start: 6,
+        end: 12,
+        plannedStart: "5/21/2026",
+        plannedFinish: "5/26/2026",
+        reqCapacity: 16,
+        confirmedCap: 14,
+        targetUnits: 200,
+        actualUnits: 170,
+        status: "Setup",
       },
     ],
   },
