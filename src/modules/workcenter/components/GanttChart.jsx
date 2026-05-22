@@ -13,54 +13,77 @@ const getColor = (status) => {
 
     case "Maintenance":
     case "Setup":
-      return "bg-gray-300 text-gray-700";
+      return "bg-gray-400 text-white";
 
     default:
-      return "bg-gray-400";
+      return "bg-slate-500";
   }
 };
 
 export default function GanttChart({ data }) {
-  const shiftStart = 8;
-  const shiftHours = 8;
+ 
+  const shiftStart = 6; // 06:00
+  const shiftEnd = 14; // 14:00
+  const shiftHours = shiftEnd - shiftStart;
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
-      {/* 🔷 Timeline Header */}
-      <div className="flex min-w-[1000px] bg-gray-50 border-b">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-md overflow-auto">
+
+      {/* 🔷 Header */}
+      <div className="flex min-w-[1200px] bg-sky-50 border-b">
+
+        {/* Plant */}
+        <div className="w-[100px] px-4 py-3 font-semibold text-gray-700 border-r">
+          Plant
+        </div>
 
         {/* Work Center */}
-        <div className="w-[180px] px-5 py-3 font-semibold text-gray-700 border-r">
+        <div className="w-[160px] px-4 py-3 font-semibold text-gray-700 border-r">
           Work Center
         </div>
 
-        {/* Time */}
+        {/* Shift */}
+        <div className="w-[160px] px-4 py-3 font-semibold text-gray-700 border-r">
+          Shift
+        </div>
+
+        {/* Timeline */}
         <div className="flex flex-1">
           {[...Array(9)].map((_, i) => (
             <div
               key={i}
-              className="flex-1 text-center py-3 text-xs text-gray-500 border-r"
+              className="flex-1 text-center py-3 text-xs font-medium text-gray-600 border-r"
             >
-              {shiftStart + i}:00
+              {String(shiftStart + i).padStart(2, "0")}:00
             </div>
           ))}
         </div>
       </div>
 
       {/* 🔷 Rows */}
-      {data.map((row) => (
+      {data.map((row, index) => (
         <div
-          key={row.wc}
-          className="flex min-w-[1000px] border-b last:border-b-0"
+          key={index}
+          className="flex min-w-[1200px] border-b last:border-b-0"
         >
 
-          {/* Work Center Name */}
-          <div className="w-[180px] px-5 py-4 font-semibold text-gray-800 border-r bg-white">
+          {/* Plant */}
+          <div className="w-[100px] px-4 py-4 border-r font-medium bg-white">
+            {row.plant}
+          </div>
+
+          {/* Work Center */}
+          <div className="w-[160px] px-4 py-4 border-r font-semibold text-gray-800 bg-white">
             {row.wc}
           </div>
 
+          {/* Shift Name */}
+          <div className="w-[160px] px-4 py-4 border-r text-gray-700 bg-white">
+            {row.shiftName}
+          </div>
+
           {/* Timeline */}
-          <div className="relative flex-1 h-[70px] bg-white">
+          <div className="relative flex-1 h-[80px] bg-white">
 
             {/* Grid */}
             <div className="absolute inset-0 flex">
@@ -84,8 +107,8 @@ export default function GanttChart({ data }) {
                 <div
                   key={i}
                   className={`
-                    absolute top-3 h-10
-                    rounded-lg px-3
+                    absolute top-4 h-11
+                    rounded-xl px-3
                     flex items-center
                     text-xs font-semibold
                     shadow-sm
@@ -98,9 +121,15 @@ export default function GanttChart({ data }) {
                     width: `${width}%`,
                   }}
                 >
-                  <span className="text-white truncate">
-                    {o.id}
-                  </span>
+                  <div className="flex flex-col leading-tight text-white overflow-hidden">
+                    <span className="truncate font-bold">
+                      {o.id}
+                    </span>
+
+                    <span className="text-[10px] opacity-90">
+                      Op: {o.operation}
+                    </span>
+                  </div>
                 </div>
               );
             })}

@@ -4,14 +4,16 @@ import UtilizationBar from "./UtilizationBar";
 
 export default function WorkCenterTable({ data }) {
   const headers = [
-    "WC ID",
-    "Description",
-    "Category",
-    "Capacity (Hr/Day)",
-    "Utilization",
-    "Current Order",
-    "Operator",
-    "Status",
+    "Order No",
+    "Work Centre",
+    "Operation",
+    "Planned Start)",
+    "Planned Finish",
+    "Req. Capacity (hr)",
+    "Confirmed Cap (hr)",
+    "shift",
+    "target units",
+    "Actual units",
   ];
 
   return (
