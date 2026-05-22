@@ -5,7 +5,7 @@ import UtilizationBar from "./UtilizationBar";
 export default function WorkCenterTable({ data }) {
   const headers = [
     "Order No",
-    "Work Centre",
+    "Work Center",
     "Operation",
     "Planned Start)",
     "Planned Finish",
@@ -34,39 +34,49 @@ export default function WorkCenterTable({ data }) {
       <div className="px-5 pt-4 pb-5">
         <Table headers={headers}>
           {data.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.WorkCenter}>
 
               <td className="px-6 py-5 font-semibold text-slate-800">
-                {row.id}
+                {row.OrderNo}
               </td>
 
               <td className="px-6 py-5">
-                {row.description}
+                {row.WorkCenter}
               </td>
 
               <td className="px-6 py-5">
-                {row.category}
+                {row.Operation}
               </td>
 
               <td className="px-6 py-5">
-                {row.capacity}
-              </td>
-
-              <td className="px-6 py-5 min-w-[220px]">
-                <UtilizationBar value={row.utilization} />
+                {row.PlannedStart}
               </td>
 
               <td className="px-6 py-5">
-                {row.currentOrder ?? "—"}
+                {row.PlannedFinish}
               </td>
 
               <td className="px-6 py-5">
-                {row.operator ?? "—"}
+                {row.ReqCapacity}
               </td>
 
               <td className="px-6 py-5">
-                <StatusIndicator status={row.status} />
+                {row.ConfirmedCap}
               </td>
+
+              <td className="px-6 py-5">
+                {row.Shift}
+              </td>
+
+              <td className="px-6 py-5">
+                {row.TargetUnits}
+              </td>
+
+              <td className="px-6 py-5">
+                {row.ActualUnits}
+              </td>
+
+      
 
             </tr>
           ))}
